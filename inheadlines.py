@@ -47,7 +47,7 @@ def clear_screen():
 def choice():
     banner()
     print(f"{lime_green}Select your intel feed, citizen...\n{reset}")
-    print(f"{lime_green}1. INDIA\n2.  INDIA GLOBAL\n3.  ASIA\n4.  EUROPE\n5.  AUSTRALIA\n6.  AMERICAS\n7.  AFRICA\n8.  US\n9.  UK\n10. MIDDLE EAST\n11. SCIENCE\n12. DIASPORA\n13. EXIT\n{reset}")
+    print(f"{lime_green}1.  INDIA\n2.  INDIA GLOBAL\n3.  ASIA\n4.  EUROPE\n5.  AUSTRALIA\n6.  AMERICAS\n7.  AFRICA\n8.  US\n9.  UK\n10. MIDDLE EAST\n11. SCIENCE\n12. DIASPORA\n13. EXIT\n{reset}")
     ch=int(input(f"{lime_green}ENTER: "))
     print(reset)
     if(ch==1): #India
