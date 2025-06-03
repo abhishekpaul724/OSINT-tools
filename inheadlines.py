@@ -10,7 +10,7 @@ dream_blue="\033[38;2;2;207;247m"
 lime_green=lg="\033[38;2;175;255;51m"
 
 domain="https://www.ndtv.com/"
-url_list=["india","india-global","world/asia","world/europe","world/australia","world/americas","world/africa","world/us","world/uk","world/middle-east","science","world/diaspora","environment#pfrom=home-nav","auto/car-news","auto/bike-news"]
+url_list=["india","world/india-global","world/asia","world/europe","world/australia","world/americas","world/africa","world/us","world/uk","world/middle-east","science","world/diaspora","environment#pfrom=home-nav","auto/car-news","auto/bike-news"]
 suffix="#pfrom=home-ndtv_mainnavigation"
 
 def banner():
