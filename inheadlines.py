@@ -3,11 +3,11 @@ from bs4 import BeautifulSoup
 import pyfiglet
 import os
 
-scarlet_red="\033[38;2;255;0;60m"
+scarlet_red=sr="\033[38;2;255;0;60m"
 reset="\033[0m"
 glitch_violet="\033[38;2;139;0;255m"
 dream_blue="\033[38;2;2;207;247m"
-lime_green="\033[38;2;175;255;51m"
+lime_green=lg="\033[38;2;175;255;51m"
 
 domain="https://www.ndtv.com/"
 url_list=["india","india-global","world/asia","world/europe","world/australia","world/americas","world/africa","world/us","world/uk","world/middle-east","science","world/diaspora","environment#pfrom=home-nav"]
@@ -27,11 +27,15 @@ def intel(url):
             counter=0
             for a_tag,p_tag in zip(elements1,elements2):  
                 counter+=1
+                if counter<10:
+                    c="[0"+str(counter)+"]"
+                else:
+                    c="["+str(counter)+"]"
                 if a_tag:
                     headline=a_tag.get_text(strip=True)
                 if p_tag:
                     titlest=p_tag.get_text(strip=True)
-                print(f"{scarlet_red+str(counter)+'.'+lime_green+headline+reset}\n{glitch_violet+titlest+reset}\n")
+                print(f"{scarlet_red+c+" "+lime_green+headline+reset}\n{glitch_violet+titlest+reset}\n")
         else:
             print(f"{scarlet_red}Webframe compromised — DOM mutation detected{reset}")
     else:
@@ -49,9 +53,13 @@ def environment(url):
             counter=0
             for a_tag in elements:
                 counter+=1
+                if counter<10:
+                    c="[0"+str(counter)+"]"
+                else:
+                    c="["+str(counter)+"]"
                 if a_tag:
                     headline=a_tag.get_text(strip=True)
-                    print(f"{scarlet_red+str(counter)}.{dream_blue+headline}\n{reset}")
+                    print(f"{scarlet_red+c} {dream_blue+headline}\n{reset}")
         else:
             print(f"{scarlet_red}Webframe compromised — DOM mutation detected{reset}")
     else:
@@ -73,9 +81,13 @@ def indian_cities():
             counter=0
             for a_tag in elements:
                 counter+=1
+                if counter<10:
+                    c="[0"+str(counter)+"]"
+                else:
+                    c="["+str(counter)+"]"
                 if a_tag:
                     headline=a_tag.get_text(strip=True)
-                    print(f"{scarlet_red+str(counter)}.{dream_blue+headline}\n{reset}")
+                    print(f"{scarlet_red+c} {dream_blue+headline}\n{reset}")
         else:
             print(f"{scarlet_red}Webframe compromised — DOM mutation detected{reset}")
     else:
@@ -93,7 +105,7 @@ def clear_screen():
 def choice():
     banner()
     print(f"{lime_green}Select your intel feed, citizen...\n{reset}")
-    print(f"{lime_green}1.  INDIA\n2.  INDIA GLOBAL\n3.  ASIA\n4.  EUROPE\n5.  AUSTRALIA\n6.  AMERICAS\n7.  AFRICA\n8.  US\n9.  UK\n10. MIDDLE EAST\n11. SCIENCE\n12. DIASPORA\n13. ENVIRONMENT\n14. INDIAN CITIES\n15. EXIT\n{reset}")
+    print(f"{lime_green}{sr}[01]{lg} INDIA\n{sr}[02]{lg} INDIA GLOBAL\n{sr}[03]{lg} ASIA\n{sr}[04]{lg} EUROPE\n{sr}[05]{lg} AUSTRALIA\n{sr}[06]{lg} AMERICAS\n{sr}[07]{lg} AFRICA\n{sr}[08]{lg} US\n{sr}[09]{lg} UK\n{sr}[10]{lg} MIDDLE EAST\n{sr}[11]{lg} SCIENCE\n{sr}[12]{lg} DIASPORA\n{sr}[13]{lg} ENVIRONMENT\n{sr}[14]{lg} INDIAN CITIES\n{sr}[15]{lg} EXIT\n{reset}")
     ch=int(input(f"{lime_green}ENTER: "))
     print(reset)
     if(ch==1): #India
