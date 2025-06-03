@@ -10,7 +10,7 @@ dream_blue="\033[38;2;2;207;247m"
 lime_green=lg="\033[38;2;175;255;51m"
 
 domain="https://www.ndtv.com/"
-url_list=["india","india-global","world/asia","world/europe","world/australia","world/americas","world/africa","world/us","world/uk","world/middle-east","science","world/diaspora","environment#pfrom=home-nav"]
+url_list=["india","india-global","world/asia","world/europe","world/australia","world/americas","world/africa","world/us","world/uk","world/middle-east","science","world/diaspora","environment#pfrom=home-nav","auto/car-news","auto/bike-news"]
 suffix="#pfrom=home-ndtv_mainnavigation"
 
 def banner():
@@ -105,7 +105,7 @@ def clear_screen():
 def choice():
     banner()
     print(f"{lime_green}Select your intel feed, citizen...\n{reset}")
-    print(f"{lime_green}{sr}[01]{lg} INDIA\n{sr}[02]{lg} INDIA GLOBAL\n{sr}[03]{lg} ASIA\n{sr}[04]{lg} EUROPE\n{sr}[05]{lg} AUSTRALIA\n{sr}[06]{lg} AMERICAS\n{sr}[07]{lg} AFRICA\n{sr}[08]{lg} US\n{sr}[09]{lg} UK\n{sr}[10]{lg} MIDDLE EAST\n{sr}[11]{lg} SCIENCE\n{sr}[12]{lg} DIASPORA\n{sr}[13]{lg} ENVIRONMENT\n{sr}[14]{lg} INDIAN CITIES\n{sr}[15]{lg} EXIT\n{reset}")
+    print(f"{lime_green}{sr}[01]{lg} INDIA\n{sr}[02]{lg} INDIA GLOBAL\n{sr}[03]{lg} ASIA\n{sr}[04]{lg} EUROPE\n{sr}[05]{lg} AUSTRALIA\n{sr}[06]{lg} AMERICAS\n{sr}[07]{lg} AFRICA\n{sr}[08]{lg} US\n{sr}[09]{lg} UK\n{sr}[10]{lg} MIDDLE EAST\n{sr}[11]{lg} SCIENCE\n{sr}[12]{lg} DIASPORA\n{sr}[13]{lg} ENVIRONMENT\n{sr}[14]{lg} INDIAN CITIES\n{sr}[15]{lg} VEHICLE INTEL: CARS\n{sr}[16]{lg} VEHICLE INTEL: BIKES\n{sr}[17]{lg} EXIT\n{reset}")
     ch=int(input(f"{lime_green}ENTER: "))
     print(reset)
     if(ch==1): #India
@@ -150,7 +150,13 @@ def choice():
     if(ch==14): #Indian Cities
         clear_screen()
         indian_cities()
-    if(ch==15): #Exit
+    if(ch==15): #Vehicle Intel: Cars
+        clear_screen()
+        intel(url_list[13])
+    if(ch==16): #Vehicle Intel: Bikes
+        clear_screen()
+        intel(url_list[14])
+    if(ch==17): #Exit
         print(reset)
         clear_screen()
     else:
