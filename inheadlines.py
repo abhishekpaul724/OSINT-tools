@@ -91,7 +91,10 @@ def indian_cities():
         else:
             print(f"{scarlet_red}Webframe compromised — DOM mutation detected{reset}")
     else:
-        print(f"{scarlet_red}>> ERROR. STATUS CODE: ", r.status_code,reset)
+        if r.status_code == 404:
+            print(f"{scarlet_red}[ERROR_404] NO INTEL FOUND FOR SPECIFIED CITY...")
+        else:
+            print(f"{scarlet_red}>> ERROR. STATUS CODE: ", r.status_code,reset)
     print(f"{scarlet_red}EXIT POINT IDENTIFIED\nPress ENTER to exit{reset}")
     ch=input("")
     
