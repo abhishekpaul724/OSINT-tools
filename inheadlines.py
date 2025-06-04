@@ -69,7 +69,7 @@ def environment(url):
 
 def indian_cities():
     banner()
-    city=input(f"{scarlet_red}>> INITIATE TRACE… Enter city name: {lime_green}").lower()+"-news"
+    city=input(f"{scarlet_red}>> INITIATE TRACE… Enter city name: {dream_blue}").lower()+"-news"
     clear_screen()
     banner()
     url=domain+city+suffix
