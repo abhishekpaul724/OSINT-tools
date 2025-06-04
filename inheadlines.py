@@ -6,7 +6,7 @@ import os
 scarlet_red=sr="\033[38;2;255;0;60m"
 reset="\033[0m"
 glitch_violet="\033[38;2;139;0;255m"
-dream_blue="\033[38;2;2;207;247m"
+dream_blue=db="\033[38;2;2;207;247m"
 lime_green=lg="\033[38;2;175;255;51m"
 
 domain="https://www.ndtv.com/"
@@ -35,7 +35,7 @@ def intel(url):
                     headline=a_tag.get_text(strip=True)
                 if p_tag:
                     titlest=p_tag.get_text(strip=True)
-                print(f"{scarlet_red+c+" "+lime_green+headline+reset}\n{glitch_violet+titlest+reset}\n")
+                print(f"{scarlet_red+c+" "+dream_blue+headline+reset}\n{glitch_violet+titlest+reset}\n")
         else:
             print(f"{scarlet_red}Webframe compromised — DOM mutation detected{reset}")
     else:
@@ -104,9 +104,9 @@ def clear_screen():
 
 def choice():
     banner()
-    print(f"{lime_green}Select your intel feed, citizen...\n{reset}")
-    print(f"{lime_green}{sr}[01]{lg} INDIA\n{sr}[02]{lg} INDIA GLOBAL\n{sr}[03]{lg} ASIA\n{sr}[04]{lg} EUROPE\n{sr}[05]{lg} AUSTRALIA\n{sr}[06]{lg} AMERICAS\n{sr}[07]{lg} AFRICA\n{sr}[08]{lg} US\n{sr}[09]{lg} UK\n{sr}[10]{lg} MIDDLE EAST\n{sr}[11]{lg} SCIENCE\n{sr}[12]{lg} DIASPORA\n{sr}[13]{lg} ENVIRONMENT\n{sr}[14]{lg} INDIAN CITIES\n{sr}[15]{lg} VEHICLE INTEL: CARS\n{sr}[16]{lg} VEHICLE INTEL: BIKES\n{sr}[17]{lg} EXIT\n{reset}")
-    ch=int(input(f"{lime_green}ENTER: "))
+    print(f"{db}Select your intel feed, citizen...\n{reset}")
+    print(f"{sr}[01]{db} INDIA\n{sr}[02]{db} INDIA GLOBAL\n{sr}[03]{db} ASIA\n{sr}[04]{db} EUROPE\n{sr}[05]{db} AUSTRALIA\n{sr}[06]{db} AMERICAS\n{sr}[07]{db} AFRICA\n{sr}[08]{db} US\n{sr}[09]{db} UK\n{sr}[10]{db} MIDDLE EAST\n{sr}[11]{db} SCIENCE\n{sr}[12]{db} DIASPORA\n{sr}[13]{db} ENVIRONMENT\n{sr}[14]{db} INDIAN CITIES\n{sr}[15]{db} VEHICLE INTEL: CARS\n{sr}[16]{db} VEHICLE INTEL: BIKES\n{sr}[17]{db} EXIT\n{reset}")
+    ch=int(input(f"{db}ENTER: "))
     print(reset)
     if(ch==1): #India
         clear_screen()
