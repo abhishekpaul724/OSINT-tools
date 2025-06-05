@@ -1,11 +1,14 @@
 # OSINT-tools
-## 🧪 Deploy Protocol 
-git clone https://github.com/YOUR_USERNAME/OSINT-tools.git
-pip install -r requirements.txt
-# 🕶️ intel.py | ⚡ Terminal-Based News Recon Tool
 
 > “In the age of data overload, *clarity is power*. 
 > OSINT-tools put **real-time intel** in your hands, where it belongs — the command line.”
+
+## 🧪 Deploy Protocol 
+
+git clone https://github.com/YOUR_USERNAME/OSINT-tools.git
+pip install -r requirements.txt
+
+# 🕶️ intel.py | ⚡ Terminal-Based News Recon Tool
 
 ---
 **intel.py** is a minimalist, terminal-based Open Source Intelligence (OSINT) tool designed to scrape news headlines and summaries from [NDTV.com](https://www.ndtv.com/), giving strategists, developers, and cyberpunk analysts a fast, readable format directly in the shell.
@@ -15,8 +18,8 @@ pip install -r requirements.txt
 This tool is for educational, personal, and non-commercial research purposes only.
 Please review and comply with NDTV's terms of use if adapting or expanding this codebase.
 
-Boot up your terminal and intercept the data streams.
-Welcome to the grid, Operator.
+> Boot up your terminal and intercept the data streams.
+> Welcome to the grid, Operator.
 
 ---
 
@@ -41,8 +44,10 @@ Welcome to the grid, Operator.
 
 ---
 ## 💻 Visuals:
+
 ![](visuals/intel1.png)
 ![](visuals/intel2.png)
 ![](visuals/intel3.png)
+
 ## 🧪 Deploy by running
 python intel.py
