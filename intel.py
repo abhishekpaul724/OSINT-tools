@@ -9,6 +9,7 @@ glitch_violet="\033[38;2;139;0;255m"
 dream_blue=db="\033[38;2;2;207;247m"
 lime_green=lg="\033[38;2;175;255;51m"
 
+#url = domain + url_list[x] + suffix
 domain="https://www.ndtv.com/"
 url_list=["india","world/india-global","world/asia","world/europe","world/australia","world/americas","world/africa","world/us","world/uk","world/middle-east","science","world/diaspora","environment#pfrom=home-nav","auto/car-news","auto/bike-news"]
 suffix="#pfrom=home-ndtv_mainnavigation"
