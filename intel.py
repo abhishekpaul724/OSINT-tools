@@ -17,6 +17,7 @@ suffix="#pfrom=home-ndtv_mainnavigation"
 def banner():
     print(scarlet_red+pyfiglet.figlet_format("Intel",font="ansi_shadow")+reset,end="\n")
 
+# For Nations, Science, Diaspora and Vehicles
 def intel(url):
     banner()
     r = requests.get(domain+url+suffix)
@@ -107,72 +108,72 @@ def clear_screen():
         os.system("clear")
 
 def choice():
-    banner()
-    print(f"{db}Select your intel feed, citizen...\n{reset}")
-    print(f"{sr}[01]{db} INDIA\n{sr}[02]{db} INDIA GLOBAL\n{sr}[03]{db} ASIA\n{sr}[04]{db} EUROPE\n{sr}[05]{db} AUSTRALIA\n{sr}[06]{db} AMERICAS\n{sr}[07]{db} AFRICA\n{sr}[08]{db} US\n{sr}[09]{db} UK\n{sr}[10]{db} MIDDLE EAST\n{sr}[11]{db} SCIENCE\n{sr}[12]{db} DIASPORA\n{sr}[13]{db} ENVIRONMENT\n{sr}[14]{db} INDIAN CITIES\n{sr}[15]{db} VEHICLE INTEL: CARS\n{sr}[16]{db} VEHICLE INTEL: BIKES\n{sr}[17]{db} EXIT\n{reset}")
-    try:
-        ch=int(input(f"{db}ENTER: "))
-    except:
-        pass
-    print(reset)
-    try:
-        if(ch==1): #India
+    while True:
+        banner()
+        print(f"{db}Select your intel feed, citizen...\n{reset}")
+        print(f"{sr}[01]{db} INDIA\n{sr}[02]{db} INDIA GLOBAL\n{sr}[03]{db} ASIA\n{sr}[04]{db} EUROPE\n{sr}[05]{db} AUSTRALIA\n{sr}[06]{db} AMERICAS\n{sr}[07]{db} AFRICA\n{sr}[08]{db} US\n{sr}[09]{db} UK\n{sr}[10]{db} MIDDLE EAST\n{sr}[11]{db} SCIENCE\n{sr}[12]{db} DIASPORA\n{sr}[13]{db} ENVIRONMENT\n{sr}[14]{db} INDIAN CITIES\n{sr}[15]{db} VEHICLE INTEL: CARS\n{sr}[16]{db} VEHICLE INTEL: BIKES\n{sr}[17]{db} EXIT\n{reset}")
+        try:
+            ch=int(input(f"{db}ENTER: "))
+        except:
+            continue
+        print(reset)
+        try:
+            if(ch==1): #India
+                clear_screen()
+                intel(url_list[0])
+            elif(ch==2): #India Global
+                clear_screen()
+                intel(url_list[1])
+            elif(ch==3): #Asia
+                clear_screen()
+                intel(url_list[2])
+            elif(ch==4): #Europe
+                clear_screen()
+                intel(url_list[3])
+            elif(ch==5): #Australia
+                clear_screen()
+                intel(url_list[4])
+            elif(ch==6): #Americas
+                clear_screen()
+                intel(url_list[5])
+            elif(ch==7): #Africa
+                clear_screen()
+                intel(url_list[6])
+            elif(ch==8): #US
+                clear_screen()
+                intel(url_list[7])
+            elif(ch==9): #UK
+                clear_screen()
+                intel(url_list[8])
+            elif(ch==10): #Middle East
+                clear_screen()
+                intel(url_list[9])
+            elif(ch==11): #Science
+                clear_screen()
+                intel(url_list[10])
+            elif(ch==12): #Diaspora
+                clear_screen()
+                intel(url_list[11])
+            elif(ch==13): #Environment
+                clear_screen()
+                environment(url_list[12])
+            elif(ch==14): #Indian Cities
+                clear_screen()
+                indian_cities()
+            elif(ch==15): #Vehicle Intel: Cars
+                clear_screen()
+                intel(url_list[13])
+            elif(ch==16): #Vehicle Intel: Bikes
+                clear_screen()
+                intel(url_list[14])
+            elif(ch==17): #Exit
+                print(reset)
+                clear_screen()
+                break
+            else:
+                clear_screen()
+        except:
             clear_screen()
-            intel(url_list[0])
-        if(ch==2): #India Global
-            clear_screen()
-            intel(url_list[1])
-        if(ch==3): #Asia
-            clear_screen()
-            intel(url_list[2])
-        if(ch==4): #Europe
-            clear_screen()
-            intel(url_list[3])
-        if(ch==5): #Australia
-            clear_screen()
-            intel(url_list[4])
-        if(ch==6): #Americas
-            clear_screen()
-            intel(url_list[5])
-        if(ch==7): #Africa
-            clear_screen()
-            intel(url_list[6])
-        if(ch==8): #US
-            clear_screen()
-            intel(url_list[7])
-        if(ch==9): #UK
-            clear_screen()
-            intel(url_list[8])
-        if(ch==10): #Middle East
-            clear_screen()
-            intel(url_list[9])
-        if(ch==11): #Science
-            clear_screen()
-            intel(url_list[10])
-        if(ch==12): #Diaspora
-            clear_screen()
-            intel(url_list[11])
-        if(ch==13): #Environment
-            clear_screen()
-            environment(url_list[12])
-        if(ch==14): #Indian Cities
-            clear_screen()
-            indian_cities()
-        if(ch==15): #Vehicle Intel: Cars
-            clear_screen()
-            intel(url_list[13])
-        if(ch==16): #Vehicle Intel: Bikes
-            clear_screen()
-            intel(url_list[14])
-        if(ch==17): #Exit
-            print(reset)
-            clear_screen()
-        else:
-            clear_screen()
-            choice()
-    except:
-        clear_screen()
-        choice()
 
 if __name__=='__main__':
     clear_screen()
