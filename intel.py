@@ -3,6 +3,7 @@ from bs4 import BeautifulSoup
 import pyfiglet
 import os
 
+# Colors
 scarlet_red=sr="\033[38;2;255;0;60m"
 reset="\033[0m"
 glitch_violet="\033[38;2;139;0;255m"
