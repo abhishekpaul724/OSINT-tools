@@ -6,9 +6,9 @@ import os
 # Colors
 scarlet_red=sr="\033[38;2;255;0;60m"
 reset="\033[0m"
-glitch_violet="\033[38;2;139;0;255m"
-dream_blue=db="\033[38;2;2;207;247m"
 lime_green=lg="\033[38;2;175;255;51m"
+laser_blue=lb="\033[38;2;0;153;255m"
+neon_yellow=ny="\033[38;2;255;255;0m"
 
 #url = domain + url_list[x] + suffix
 domain="https://www.ndtv.com/"
@@ -38,7 +38,7 @@ def intel(url):
                     headline=a_tag.get_text(strip=True)
                 if p_tag:
                     titlest=p_tag.get_text(strip=True)
-                print(f"{scarlet_red+c+" "+dream_blue+headline+reset}\n{glitch_violet+titlest+reset}\n")
+                print(f"{scarlet_red+c+" "+neon_yellow+headline+reset}\n{laser_blue+titlest+reset}\n")
         else:
             print(f"{scarlet_red}Webframe compromised — DOM mutation detected{reset}")
     else:
@@ -62,7 +62,7 @@ def environment(url):
                     c="["+str(counter)+"]"
                 if a_tag:
                     headline=a_tag.get_text(strip=True)
-                    print(f"{scarlet_red+c} {dream_blue+headline}\n{reset}")
+                    print(f"{scarlet_red+c} {laser_blue+headline}\n{reset}")
         else:
             print(f"{scarlet_red}Webframe compromised — DOM mutation detected{reset}")
     else:
@@ -72,7 +72,7 @@ def environment(url):
 
 def indian_cities():
     banner()
-    city=input(f"{scarlet_red}>> INITIATE TRACE… Enter city name: {dream_blue}").lower()+"-news"
+    city=input(f"{scarlet_red}>> INITIATE TRACE… Enter city name: {laser_blue}").lower()+"-news"
     clear_screen()
     banner()
     url=domain+city+suffix
@@ -90,7 +90,7 @@ def indian_cities():
                     c="["+str(counter)+"]"
                 if a_tag:
                     headline=a_tag.get_text(strip=True)
-                    print(f"{scarlet_red+c} {dream_blue+headline}\n{reset}")
+                    print(f"{scarlet_red+c} {laser_blue+headline}\n{reset}")
         else:
             print(f"{scarlet_red}Webframe compromised — DOM mutation detected{reset}")
     else:
@@ -110,12 +110,14 @@ def clear_screen():
 
 def choice():
     while True:
+        clear_screen()
         banner()
-        print(f"{db}Select your intel feed, citizen...\n{reset}")
-        print(f"{sr}[01]{db} INDIA\n{sr}[02]{db} INDIA GLOBAL\n{sr}[03]{db} ASIA\n{sr}[04]{db} EUROPE\n{sr}[05]{db} AUSTRALIA\n{sr}[06]{db} AMERICAS\n{sr}[07]{db} AFRICA\n{sr}[08]{db} US\n{sr}[09]{db} UK\n{sr}[10]{db} MIDDLE EAST\n{sr}[11]{db} SCIENCE\n{sr}[12]{db} DIASPORA\n{sr}[13]{db} ENVIRONMENT\n{sr}[14]{db} INDIAN CITIES\n{sr}[15]{db} VEHICLE INTEL: CARS\n{sr}[16]{db} VEHICLE INTEL: BIKES\n{sr}[17]{db} EXIT\n{reset}")
+        print(f"{lb}Select your intel feed, citizen...\n{reset}")
+        print(f"{sr}[01]{lb} INDIA\n{sr}[02]{lb} INDIA GLOBAL\n{sr}[03]{lb} ASIA\n{sr}[04]{lb} EUROPE\n{sr}[05]{lb} AUSTRALIA\n{sr}[06]{lb} AMERICAS\n{sr}[07]{lb} AFRICA\n{sr}[08]{lb} US\n{sr}[09]{lb} UK\n{sr}[10]{lb} MIDDLE EAST\n{sr}[11]{lb} SCIENCE\n{sr}[12]{lb} DIASPORA\n{sr}[13]{lb} ENVIRONMENT\n{sr}[14]{lb} INDIAN CITIES\n{sr}[15]{lb} VEHICLE INTEL: CARS\n{sr}[16]{lb} VEHICLE INTEL: BIKES\n{sr}[17]{lb} EXIT\n{reset}")
         try:
-            ch=int(input(f"{db}ENTER: "))
+            ch=int(input(f"{lb}ENTER: "))
         except:
+            clear_screen()
             continue
         print(reset)
         try:
