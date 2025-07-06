@@ -110,7 +110,7 @@ def choice():
         print(f"{ny}[02] {lb}LATITUDE AND LONGITUDE"+reset)
         print(f"{ny}[03] {lb}EXIT"+reset)
         try:
-            ch=int(input(f"{lb}ENTER: {neon_yellow}"))
+            ch=int(input(f"\n{lb}ENTER: {neon_yellow}"))
         except:
             clear_screen()
             continue
