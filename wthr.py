@@ -105,7 +105,7 @@ def clear_screen():
 def choice():
     while True:
         clear_screen()
-        print(laser_blue+"WEATHER SYSTEM ACTIVE. ENTER NUMERIC CODE TO PROCEED.\n"+reset)
+        print(laser_blue+"\nWEATHER SYSTEM ACTIVE. ENTER NUMERIC CODE TO PROCEED.\n"+reset)
         print(f"{ny}[01] {lb}OPERATOR'S STATION"+reset)
         print(f"{ny}[02] {lb}LATITUDE AND LONGITUDE"+reset)
         print(f"{ny}[03] {lb}EXIT"+reset)
