@@ -82,8 +82,8 @@ def show_weather(latitude,longitude,location=""):
             current_weather=weather_dict[r['current']['weather_code']]
             print(scarlet_red+f"WEATHER STATUS: {laser_blue}{current_weather}\n"+reset)
         print(scarlet_red+"WIND STATUS:")
-        print(scarlet_red+f"Speed: {laser_blue}{r['current']['wind_speed_10m']}{r['current_units']['wind_speed_10m']}",end=" | ")
-        print(scarlet_red+f"Gusts: {laser_blue}{r['current']['wind_gusts_10m']}{r['current_units']['wind_gusts_10m']}",end=" | ")
+        print(scarlet_red+f"Speed: {laser_blue}{r['current']['wind_speed_10m']}{r['current_units']['wind_speed_10m']}")
+        print(scarlet_red+f"Gusts: {laser_blue}{r['current']['wind_gusts_10m']}{r['current_units']['wind_gusts_10m']}")
         print(scarlet_red+f"Direction: {laser_blue}{wind_dir[round(r['current']['wind_direction_10m']/45)]} ({r['current']['wind_direction_10m']}{r['current_units']['wind_direction_10m']})")
     
 
@@ -105,7 +105,7 @@ def clear_screen():
 def choice():
     while True:
         clear_screen()
-        print(laser_blue+"\nWEATHER SYSTEM ACTIVE. ENTER NUMERIC CODE TO PROCEED.\n"+reset)
+        print(laser_blue+"\nWEATHER SYSTEM ACTIVE.\nENTER NUMERIC CODE TO PROCEED.\n"+reset)
         print(f"{ny}[01] {lb}OPERATOR'S STATION"+reset)
         print(f"{ny}[02] {lb}LATITUDE AND LONGITUDE"+reset)
         print(f"{ny}[03] {lb}EXIT"+reset)
