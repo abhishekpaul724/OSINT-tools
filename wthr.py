@@ -91,8 +91,8 @@ def show_weather(latitude,longitude,location=""):
     ch=input("")
 
 def custom_lat_long():
-    latitude=input(nf+"INJECT LATITUDE: "+nf)
-    longitude=input(nf+"\nINJECT LONGITUDE: "+nf)  
+    latitude=input(nf+"INJECT LATITUDE: "+inp)
+    longitude=input(nf+"\nINJECT LONGITUDE: "+inp)  
     clear_screen()
     show_weather(latitude=latitude,longitude=longitude)
 
