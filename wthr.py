@@ -3,9 +3,9 @@ import os
 from datetime import datetime
 
 # Colors
-scarlet_red=sr="\033[38;2;255;0;60m"
-laser_blue=lb="\033[38;2;0;153;255m"
-neon_yellow=ny="\033[38;2;255;255;0m"
+nf="\033[38;2;217;70;239m" #neon_fuchsia
+vc="\033[38;2;140;100;220m" #violet_crush
+inp="\033[38;2;255;32;121m" #infrared_pink
 reset="\033[0m"
 
 # Operator Location Data
@@ -68,31 +68,31 @@ def show_weather(latitude,longitude,location=""):
     resp=requests.get(url,params=current_params)
     if resp.status_code==200:
         r=resp.json()
-        print(scarlet_red+f"CURRENT PHASE: {laser_blue}{"DAY" if r['current']['is_day'] else "NIGHT"}\n"+reset)
+        print(inp+f"CURRENT PHASE: {nf}{"DAY" if r['current']['is_day'] else "NIGHT"}\n"+reset)
         # location Data
-        print(scarlet_red+f"Lat and Long : {laser_blue}{latitude}, {longitude}"+reset)
+        print(inp+f"Lat and Long : {nf}{latitude}, {longitude}"+reset)
         if location:
-            print(scarlet_red+f"Location : {laser_blue}{location}\n"+reset)
+            print(inp+f"Location : {nf}{location}\n"+reset)
         # Weather Data
-        print(scarlet_red+f"Temperature : {laser_blue}{r['current']['temperature_2m']}{r['current_units']['temperature_2m']} Feels like {r['current']["apparent_temperature"]}{r['current_units']['apparent_temperature']}"+reset)
-        print(scarlet_red+f"Precipitation : {laser_blue}{r['current']['precipitation']}{r['current_units']['precipitation']}"+reset)
-        print(scarlet_red+f"Cloud Cover : {laser_blue}{r['current']['cloud_cover']}{r['current_units']['cloud_cover']}"+reset)
-        print(scarlet_red+f"Humidity : {laser_blue}{r['current']['relative_humidity_2m']}{r['current_units']['relative_humidity_2m']}\n"+reset)
+        print(inp+f"Temperature : {nf}{r['current']['temperature_2m']}{r['current_units']['temperature_2m']} Feels like {r['current']["apparent_temperature"]}{r['current_units']['apparent_temperature']}"+reset)
+        print(inp+f"Precipitation : {nf}{r['current']['precipitation']}{r['current_units']['precipitation']}"+reset)
+        print(inp+f"Cloud Cover : {nf}{r['current']['cloud_cover']}{r['current_units']['cloud_cover']}"+reset)
+        print(inp+f"Humidity : {nf}{r['current']['relative_humidity_2m']}{r['current_units']['relative_humidity_2m']}\n"+reset)
         if r['current']['weather_code'] in weather_dict:
             current_weather=weather_dict[r['current']['weather_code']]
-            print(scarlet_red+f"WEATHER STATUS: {laser_blue}{current_weather}\n"+reset)
-        print(scarlet_red+"WIND STATUS:")
-        print(scarlet_red+f"Speed: {laser_blue}{r['current']['wind_speed_10m']}{r['current_units']['wind_speed_10m']}")
-        print(scarlet_red+f"Gusts: {laser_blue}{r['current']['wind_gusts_10m']}{r['current_units']['wind_gusts_10m']}")
-        print(scarlet_red+f"Direction: {laser_blue}{wind_dir[round(r['current']['wind_direction_10m']/45)]} ({r['current']['wind_direction_10m']}{r['current_units']['wind_direction_10m']})")
+            print(inp+f"WEATHER STATUS: {nf}{current_weather}\n"+reset)
+        print(inp+"WIND STATUS:")
+        print(inp+f"Speed: {nf}{r['current']['wind_speed_10m']}{r['current_units']['wind_speed_10m']}")
+        print(inp+f"Gusts: {nf}{r['current']['wind_gusts_10m']}{r['current_units']['wind_gusts_10m']}")
+        print(inp+f"Direction: {nf}{wind_dir[round(r['current']['wind_direction_10m']/45)]} ({r['current']['wind_direction_10m']}{r['current_units']['wind_direction_10m']})")
     
 
-    print(f"{scarlet_red}\nEXIT POINT IDENTIFIED\nPress ENTER to exit{reset}")
+    print(f"{inp}\nEXIT POINT IDENTIFIED\nPress ENTER to exit{reset}")
     ch=input("")
 
 def custom_lat_long():
-    latitude=input(neon_yellow+"INJECT LATITUDE: "+laser_blue)
-    longitude=input(neon_yellow+"\nINJECT LONGITUDE: "+laser_blue)  
+    latitude=input(nf+"INJECT LATITUDE: "+nf)
+    longitude=input(nf+"\nINJECT LONGITUDE: "+nf)  
     clear_screen()
     show_weather(latitude=latitude,longitude=longitude)
 
@@ -105,12 +105,12 @@ def clear_screen():
 def choice():
     while True:
         clear_screen()
-        print(laser_blue+"\nWEATHER SYSTEM ACTIVE.\nENTER NUMERIC CODE TO PROCEED.\n"+reset)
-        print(f"{ny}[01] {lb}OPERATOR'S STATION"+reset)
-        print(f"{ny}[02] {lb}LATITUDE AND LONGITUDE"+reset)
-        print(f"{ny}[03] {lb}EXIT"+reset)
+        print(vc+"\nWEATHER SYSTEM ACTIVE.\nENTER NUMERIC CODE TO PROCEED.\n"+reset)
+        print(f"{nf}[01] {inp}OPERATOR'S STATION"+reset)
+        print(f"{nf}[02] {inp}LATITUDE AND LONGITUDE"+reset)
+        print(f"{nf}[03] {inp}EXIT"+reset)
         try:
-            ch=int(input(f"\n{lb}ENTER: {neon_yellow}"))
+            ch=int(input(f"\n{vc}ENTER: {nf}"))
         except:
             clear_screen()
             continue
