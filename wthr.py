@@ -68,26 +68,27 @@ def show_weather(latitude,longitude,location=""):
     resp=requests.get(url,params=current_params)
     if resp.status_code==200:
         r=resp.json()
-        print(inp+f"CURRENT PHASE: {nf}{"DAY" if r['current']['is_day'] else "NIGHT"}\n"+reset)
+        print(f"{inp}>> WX FEED <<\n{reset}")
+        print(inp+f"PHS : {nf}{"DAY" if r['current']['is_day'] else "NIGHT"}\n"+reset)
         # location Data
-        print(inp+f"Lat and Long : {nf}{latitude}, {longitude}"+reset)
+        print(inp+f"LAT : {nf}{latitude} | {inp}LNG : {nf}{longitude}"+reset)
         if location:
-            print(inp+f"Location : {nf}{location}\n"+reset)
+            print(inp+f"LOC : {nf}{location}\n"+reset)
         # Weather Data
-        print(inp+f"Temperature : {nf}{r['current']['temperature_2m']}{r['current_units']['temperature_2m']} Feels like {r['current']["apparent_temperature"]}{r['current_units']['apparent_temperature']}"+reset)
-        print(inp+f"Precipitation : {nf}{r['current']['precipitation']}{r['current_units']['precipitation']}"+reset)
-        print(inp+f"Cloud Cover : {nf}{r['current']['cloud_cover']}{r['current_units']['cloud_cover']}"+reset)
-        print(inp+f"Humidity : {nf}{r['current']['relative_humidity_2m']}{r['current_units']['relative_humidity_2m']}\n"+reset)
+        print(inp+f"TEMP : {nf}{r['current']['temperature_2m']}{r['current_units']['temperature_2m']} | {inp}FEELS : {nf}{r['current']["apparent_temperature"]}{r['current_units']['apparent_temperature']}"+reset)
+        print(inp+f"PRECIP : {nf}{r['current']['precipitation']}{r['current_units']['precipitation']}"+reset)
+        print(inp+f"CLD-COV : {nf}{r['current']['cloud_cover']}{r['current_units']['cloud_cover']}"+reset)
+        print(inp+f"HUMID : {nf}{r['current']['relative_humidity_2m']}{r['current_units']['relative_humidity_2m']}\n"+reset)
         if r['current']['weather_code'] in weather_dict:
             current_weather=weather_dict[r['current']['weather_code']]
-            print(inp+f"WEATHER STATUS: {nf}{current_weather}\n"+reset)
-        print(inp+"WIND STATUS:")
-        print(inp+f"Speed: {nf}{r['current']['wind_speed_10m']}{r['current_units']['wind_speed_10m']}")
-        print(inp+f"Gusts: {nf}{r['current']['wind_gusts_10m']}{r['current_units']['wind_gusts_10m']}")
-        print(inp+f"Direction: {nf}{wind_dir[round(r['current']['wind_direction_10m']/45)]} ({r['current']['wind_direction_10m']}{r['current_units']['wind_direction_10m']})")
+            print(inp+f"WX : {nf}{current_weather}\n"+reset)
+        print(inp+"WIND ➤",end=" ")
+        print(inp+f" SPD: {nf}{r['current']['wind_speed_10m']}{r['current_units']['wind_speed_10m']}",end=" | ")
+        print(inp+f"GUSTS: {nf}{r['current']['wind_gusts_10m']}{r['current_units']['wind_gusts_10m']}",end=" | ")
+        print(inp+f"DIR: {nf}{wind_dir[round(r['current']['wind_direction_10m']/45)]} ({r['current']['wind_direction_10m']}{r['current_units']['wind_direction_10m']})")
     
 
-    print(f"{inp}\nEXIT POINT IDENTIFIED\nPress ENTER to exit{reset}")
+    print(f"{inp}\n>> EXIT POINT IDENTIFIED\n>> Press ENTER to exit{reset}")
     ch=input("")
 
 def custom_lat_long():
@@ -105,12 +106,12 @@ def clear_screen():
 def choice():
     while True:
         clear_screen()
-        print(vc+"\nWEATHER SYSTEM ACTIVE.\nENTER NUMERIC CODE TO PROCEED.\n"+reset)
+        print(vc+"\n>> WEATHER SYSTEM ACTIVE.\n>> ENTER NUMERIC CODE TO PROCEED.\n"+reset)
         print(f"{nf}[01] {inp}OPERATOR'S STATION"+reset)
         print(f"{nf}[02] {inp}LATITUDE AND LONGITUDE"+reset)
         print(f"{nf}[03] {inp}EXIT"+reset)
         try:
-            ch=int(input(f"\n{vc}ENTER: {nf}"))
+            ch=int(input(f"\n{vc}>> ENTER: {nf}"))
         except:
             clear_screen()
             continue
