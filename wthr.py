@@ -83,8 +83,8 @@ def show_weather(latitude,longitude,location=""):
             current_weather=weather_dict[r['current']['weather_code']]
             print(inp+f"WX : {nf}{current_weather}\n"+reset)
         print(inp+"WIND ➤")
-        print(inp+f" SPD: {nf}{r['current']['wind_speed_10m']}{r['current_units']['wind_speed_10m']}",end=" | ")
-        print(inp+f"GUSTS: {nf}{r['current']['wind_gusts_10m']}{r['current_units']['wind_gusts_10m']}",end=" | ")
+        print(inp+f"SPD: {nf}{r['current']['wind_speed_10m']}{r['current_units']['wind_speed_10m']}",end=" | ")
+        print(inp+f"GUSTS: {nf}{r['current']['wind_gusts_10m']}{r['current_units']['wind_gusts_10m']}")
         print(inp+f"DIR: {nf}{wind_dir[round(r['current']['wind_direction_10m']/45)]} ({r['current']['wind_direction_10m']}{r['current_units']['wind_direction_10m']})")
     
 
