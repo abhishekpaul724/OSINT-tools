@@ -18,47 +18,48 @@ url="https://api.open-meteo.com/v1/forecast?"
 
 # Weather Code Dictionary
 weather_dict = {
-    0: "Clear sky",
-    1: "Mainly clear",
-    2: "Partly cloudy",
-    3: "Overcast",
-    4: "Freezing drizzle",
-    6: "Freezing rain",
-    7: "Freezing rain showers",
-    10: "Ice pellets",
-    11: "Hail",
-    12: "Thunderstorm with rain",
-    13: "Thunderstorm with snow",
-    14: "Thunderstorm with hail",
-    45: "Fog",
-    48: "Depositing rime fog",
-    51: "Light drizzle",
-    53: "Moderate drizzle",
-    55: "Dense drizzle",
-    61: "Light rain",
-    63: "Moderate rain",
-    65: "Heavy rain",
-    71: "Light snow",
-    73: "Moderate snow",
-    75: "Heavy snow",
-    77: "Ice crystals",
-    80: "Showers",\
+    0: "CLR SKY",
+    1: "MAINLY CLR",
+    2: "PARTLY CLOUDY",
+    3: "OVERCAST",
+    4: "FREEZING DRIZL",
+    6: "FREEZING RAIN",
+    7: "FREEZING RAIN SHOWERS",
+    10: "ICE PELLETS",
+    11: "HAIL",
+    12: "THNDRSTRM + RAIN",
+    13: "THNDRSTRM + SNW",
+    14: "THNDRSTRM + HAIL",
+    45: "FOG",
+    48: "DEPOSITING RIME FOG",
+    51: "LGT DRIZL",
+    53: "MOD DRIZL",
+    55: "DENSE DRIZL",
+    61: "LGT RAIN",
+    63: "MOD RAIN",
+    65: "HVY RAIN",
+    71: "LGT SNW",
+    73: "MOD SNW",
+    75: "HVY SNW",
+    77: "ICE CRYSTLS",
+    80: "SHOWERS",
     81: "Slight rain showers",
     85: "Snow showers slight",
     86: "Snow showers heavy",
-    90: "Thunderstorm without hail",
-    91: "Thunderstorm with light rain",
-    92: "Thunderstorm with heavy rain",
-    93: "Thunderstorm with light snow",
-    94: "Thunderstorm with heavy snow",
-    95: "Thunderstorm",
-    99: "Thunderstorm with hail"
+    90: "THNDRSTRM NO HAIL",
+    91: "THNDRSTRM + LGT RAIN",
+    92: "THNDRSTRM + HVY RAIN",
+    93: "THNDRSTRM + LGT SNW",
+    94: "THNDRSTRM + HVY SNW",
+    95: "THNDRSTRM",
+    99: "THNDRSTRM + HAIL"
 }
 wind_dir = ['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW', 'N']
 
 def show_weather(latitude,longitude,location=""):
     # Current Weather
     # URL Parameters
+    print(f"{inp}>> WX FEED <<\n{reset}")
     current_params = {
 	"latitude": f"{latitude}",
 	"longitude": f"{longitude}",
@@ -68,26 +69,44 @@ def show_weather(latitude,longitude,location=""):
     resp=requests.get(url,params=current_params)
     if resp.status_code==200:
         r=resp.json()
-        print(f"{inp}>> WX FEED <<\n{reset}")
-        print(inp+f"PHS : {nf}{"DAY" if r['current']['is_day'] else "NIGHT"}\n"+reset)
+        print(inp+f"[ PHS ] : {nf}{"DAY" if r['current']['is_day'] else "NIGHT"}\n"+reset)
         # location Data
-        print(inp+f"LAT : {nf}{latitude} | {inp}LNG : {nf}{longitude}"+reset)
+        print(inp+f"[ LAT ] : {nf}{latitude} | {inp}[ LNG ] : {nf}{longitude}"+reset)
         if location:
-            print(inp+f"LOC : {nf}{location}\n"+reset)
+            print(inp+f"[ LOC ]: {nf}{location}\n"+reset)
         # Weather Data
-        print(inp+f"TEMP : {nf}{r['current']['temperature_2m']}{r['current_units']['temperature_2m']} | {inp}FEELS : {nf}{r['current']["apparent_temperature"]}{r['current_units']['apparent_temperature']}"+reset)
-        print(inp+f"PRECIP : {nf}{r['current']['precipitation']}{r['current_units']['precipitation']}"+reset)
-        print(inp+f"CLD-COV : {nf}{r['current']['cloud_cover']}{r['current_units']['cloud_cover']}"+reset)
-        print(inp+f"HUMID : {nf}{r['current']['relative_humidity_2m']}{r['current_units']['relative_humidity_2m']}\n"+reset)
+        print(inp+f"[ TEMP ] : {nf}{r['current']['temperature_2m']}{r['current_units']['temperature_2m']} | {inp}[ FEELS ] : {nf}{r['current']["apparent_temperature"]}{r['current_units']['apparent_temperature']}"+reset)
+        print(inp+f"[ PRECIP ] : {nf}{r['current']['precipitation']}{r['current_units']['precipitation']}"+reset)
+        print(inp+f"[ CLD-COV ] : {nf}{r['current']['cloud_cover']}{r['current_units']['cloud_cover']}"+reset)
+        print(inp+f"[ HUMID ] : {nf}{r['current']['relative_humidity_2m']}{r['current_units']['relative_humidity_2m']}\n"+reset)
         if r['current']['weather_code'] in weather_dict:
             current_weather=weather_dict[r['current']['weather_code']]
-            print(inp+f"WX : {nf}{current_weather}\n"+reset)
+            print(inp+f"[ WX ] : {nf}{current_weather}\n"+reset)
         print(inp+"WIND ➤")
-        print(inp+f"SPD: {nf}{r['current']['wind_speed_10m']}{r['current_units']['wind_speed_10m']}",end=" | ")
-        print(inp+f"GUSTS: {nf}{r['current']['wind_gusts_10m']}{r['current_units']['wind_gusts_10m']}")
-        print(inp+f"DIR: {nf}{wind_dir[round(r['current']['wind_direction_10m']/45)]} ({r['current']['wind_direction_10m']}{r['current_units']['wind_direction_10m']})")
-    
-
+        print(inp+f"[ SPD ]: {nf}{r['current']['wind_speed_10m']}{r['current_units']['wind_speed_10m']}",end=" | ")
+        print(inp+f"[ GUSTS ]: {nf}{r['current']['wind_gusts_10m']}{r['current_units']['wind_gusts_10m']}")
+        print(inp+f"[ DIR ]: {nf}{wind_dir[round(r['current']['wind_direction_10m']/45)]} ({r['current']['wind_direction_10m']}{r['current_units']['wind_direction_10m']})")
+    else:
+        print(f"{inp}[ TRACE FAILURE ] : [ CODE {resp.status_code}{reset} ]")
+    # Daily Forecast
+    daily_params={
+        "latitude": f"{latitude}",
+	    "longitude": f"{longitude}", 
+        "daily": ["weather_code", "temperature_2m_mean", "apparent_temperature_mean"],
+        "timezone": "auto" 
+    }
+    daily_resp=requests.get(url,params=daily_params)
+    if daily_resp.status_code==200:
+        daily_r=daily_resp.json()
+        print(inp+"\n[ DAILY_4CAST ]\n"+reset)
+        for i in range(1,7):
+            if daily_r['daily']['weather_code'][i] in weather_dict:
+                daily_weather=weather_dict[daily_r['daily']['weather_code'][i]]
+                daily_temp_mean=daily_r["daily"]["temperature_2m_mean"][i]
+                daily_apparent_temp_mean=daily_r["daily"]["apparent_temperature_mean"][i]
+            print(inp+f"{daily_r["daily"]["time"][i]} : {nf}{daily_weather} {daily_temp_mean} {vc}WILL FEEL{nf} {daily_apparent_temp_mean}"+reset)
+    else:
+        print(f"{inp}4CAST DOWN: ERROR CODE {daily_resp.status_code}{reset}")
     print(f"{inp}\n>> EXIT POINT IDENTIFIED\n>> Press ENTER to exit{reset}")
     ch=input("")
 
