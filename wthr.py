@@ -104,7 +104,7 @@ def show_weather(latitude,longitude,location=""):
                 daily_weather=weather_dict[daily_r['daily']['weather_code'][i]]
                 daily_temp_mean=daily_r["daily"]["temperature_2m_mean"][i]
                 daily_apparent_temp_mean=daily_r["daily"]["apparent_temperature_mean"][i]
-            print(inp+f"{daily_r["daily"]["time"][i]} :\n{nf}{daily_weather} {daily_temp_mean}°C {vc}WILL FEEL{nf} {daily_apparent_temp_mean}°C"+reset)
+            print(inp+f"{daily_r["daily"]["time"][i]}\n{nf}{daily_weather} {daily_temp_mean}°C {vc}WILL FEEL{nf} {daily_apparent_temp_mean}°C\n"+reset)
     else:
         print(f"{inp}4CAST DOWN: ERROR CODE {daily_resp.status_code}{reset}")
     print(f"{inp}\n>> EXIT POINT IDENTIFIED\n>> Press ENTER to exit{reset}")
