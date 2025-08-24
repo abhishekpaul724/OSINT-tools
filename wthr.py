@@ -55,6 +55,7 @@ weather_dict = {
 wind_dir = ['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW', 'N']
 
 def show_weather(latitude,longitude,location=""):
+    clear_screen()
     # Current Weather
     # URL Parameters
     print(f"{inp}>> WX FEED <<\n{reset}")
@@ -108,6 +109,7 @@ def show_weather(latitude,longitude,location=""):
     ch=input("")
 
 def custom_lat_long():
+    clear_screen()
     latitude=input(nf+"INJECT LATITUDE: "+inp)
     longitude=input(nf+"\nINJECT LONGITUDE: "+inp)  
     clear_screen()
@@ -130,14 +132,11 @@ def choice():
         try:
             ch=int(input(f"\n{vc}>> ENTER: {nf}"))
         except:
-            clear_screen()
             continue
         try:
             if(ch==1):
-                clear_screen()
                 show_weather(operator_latitude,operator_longitude,operator_location)
             if(ch==2):
-                clear_screen()
                 custom_lat_long()
             elif(ch==3):
                 print(reset)
@@ -147,5 +146,4 @@ def choice():
             clear_screen()
 
 if __name__=='__main__':
-    clear_screen()
     choice()
