@@ -22,30 +22,27 @@ weather_dict = {
     1: "MAINLY CLR",
     2: "PARTLY CLOUDY",
     3: "OVERCAST",
-    4: "FREEZING DRIZL",
-    6: "FREEZING RAIN",
-    7: "FREEZING RAIN SHOWERS",
-    10: "ICE PELLETS",
-    11: "HAIL",
-    12: "THNDRSTRM + RAIN",
-    13: "THNDRSTRM + SNW",
-    14: "THNDRSTRM + HAIL",
     45: "FOG",
     48: "DEPOSITING RIME FOG",
     51: "LGT DRIZL",
     53: "MOD DRIZL",
     55: "DENSE DRIZL",
+    56: "LGT FREEZING DRIZL",
+    57: "DENSE FREEZING DRIZL",
     61: "LGT RAIN",
     63: "MOD RAIN",
     65: "HVY RAIN",
+    66: "LGT FREEZING RAIN",
+    67: "HVY FREEZING RAIN",
     71: "LGT SNW",
     73: "MOD SNW",
     75: "HVY SNW",
     77: "ICE CRYSTLS",
-    80: "SHOWERS",
-    81: "Slight rain showers",
-    85: "Snow showers slight",
-    86: "Snow showers heavy",
+    80: "SLT SHOWERS",
+    81: "MOD SHOWERS",
+    82: "VLT SHOWERS",
+    85: "SNW SHOWERS SLT",
+    86: "SNW SHOWERS HVY",
     90: "THNDRSTRM NO HAIL",
     91: "THNDRSTRM + LGT RAIN",
     92: "THNDRSTRM + HVY RAIN",
@@ -54,6 +51,7 @@ weather_dict = {
     95: "THNDRSTRM",
     99: "THNDRSTRM + HAIL"
 }
+# Wind Directions
 wind_dir = ['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW', 'N']
 
 def show_weather(latitude,longitude,location=""):
@@ -69,23 +67,22 @@ def show_weather(latitude,longitude,location=""):
     resp=requests.get(url,params=current_params)
     if resp.status_code==200:
         r=resp.json()
-        print(inp+f"[ PHS ] : {nf}{"DAY" if r['current']['is_day'] else "NIGHT"}\n"+reset)
+        print(f"{inp}[ PHS ] : {nf}{"DAY" if r['current']['is_day'] else "NIGHT"}\n{reset}")
         # location Data
-        print(inp+f"[ LAT ] : {nf}{latitude}\n{inp}[ LNG ] : {nf}{longitude}"+reset)
+        print(f"{inp}[ LAT ] : {nf}{latitude}\n{inp}[ LNG ] : {nf}{longitude}{reset}")
         if location:
-            print(inp+f"[ LOC ]: {nf}{location}\n"+reset)
+            print(f"{inp}[ LOC ]: {nf}{location}\n{reset}")
         # Weather Data
-        print(inp+f"[ TEMP ] : {nf}{r['current']['temperature_2m']}{r['current_units']['temperature_2m']} | {inp}[ FEELS ] : {nf}{r['current']["apparent_temperature"]}{r['current_units']['apparent_temperature']}"+reset)
-        print(inp+f"[ PRECIP ] : {nf}{r['current']['precipitation']}{r['current_units']['precipitation']}"+reset)
-        print(inp+f"[ CLD-COV ] : {nf}{r['current']['cloud_cover']}{r['current_units']['cloud_cover']}"+reset)
-        print(inp+f"[ HUMID ] : {nf}{r['current']['relative_humidity_2m']}{r['current_units']['relative_humidity_2m']}\n"+reset)
-        if r['current']['weather_code'] in weather_dict:
-            current_weather=weather_dict[r['current']['weather_code']]
-            print(inp+f"[ WX ] : {nf}{current_weather}\n"+reset)
+        print(f"{inp}[ TEMP ] : {nf}{r['current']['temperature_2m']}{r['current_units']['temperature_2m']} | {inp}[ FEELS ] : {nf}{r['current']["apparent_temperature"]}{r['current_units']['apparent_temperature']}{reset}")
+        print(f"{inp}[ PRECIP ] : {nf}{r['current']['precipitation']}{r['current_units']['precipitation']}{reset}")
+        print(f"{inp}[ CLD-COV ] : {nf}{r['current']['cloud_cover']}{r['current_units']['cloud_cover']}{reset}")
+        print(f"{inp}[ HUMID ] : {nf}{r['current']['relative_humidity_2m']}{r['current_units']['relative_humidity_2m']}\n{reset}")
+        current_weather=weather_dict.get(r['current']['weather_code'], "WTHR CODE NOT DEFINED")
+        print(f"{inp}[ WX ] : {nf}{current_weather}\n{reset}")
         print(inp+"WIND ➤")
-        print(inp+f"[ SPD ]: {nf}{r['current']['wind_speed_10m']}{r['current_units']['wind_speed_10m']}",end=" | ")
-        print(inp+f"[ GUSTS ]: {nf}{r['current']['wind_gusts_10m']}{r['current_units']['wind_gusts_10m']}")
-        print(inp+f"[ DIR ]: {nf}{wind_dir[round(r['current']['wind_direction_10m']/45)]} ({r['current']['wind_direction_10m']}{r['current_units']['wind_direction_10m']})")
+        print(f"{inp}[ SPD ]: {nf}{r['current']['wind_speed_10m']}{r['current_units']['wind_speed_10m']}",end=" | ")
+        print(f"{inp}[ GUSTS ]: {nf}{r['current']['wind_gusts_10m']}{r['current_units']['wind_gusts_10m']}")
+        print(f"{inp}[ DIR ]: {nf}{wind_dir[round(r['current']['wind_direction_10m']/45)]} ({r['current']['wind_direction_10m']}{r['current_units']['wind_direction_10m']})")
     else:
         print(f"{inp}[ TRACE FAILURE ] : [ CODE {resp.status_code}{reset} ]")
     # Daily Forecast
@@ -116,6 +113,7 @@ def custom_lat_long():
     clear_screen()
     show_weather(latitude=latitude,longitude=longitude)
 
+# Function to clear terminal screen based on OS
 def clear_screen():
     if os.name=="nt":
         os.system("cls")
