@@ -34,7 +34,7 @@ def hindu():
             for entry in datafeed.entries:
                 cprint(cyan,entry.title)
                 if entry.description != "":
-                    cprint(inb,entry.description+"\n")
+                    cprint(inp,entry.description+"\n")
                 else:
                     print("\n")
         cprint(nf,"\n>> EXIT POINT IDENTIFIED\n>> Press ENTER to exit")
@@ -51,11 +51,11 @@ def cprint(color,text,end="\n"):
 def source_choice():
     while True:
         clear_screen()
-        cprint(inb,"[ GRIDWATCH ACTIVE ]")
-        cprint(inb,">> SELECT DATAFEED\n")
+        cprint(nf,"[ GRIDWATCH ACTIVE ]")
+        cprint(nf,">> SELECT DATAFEED\n")
         cprint(inp,"[01] HINDU \n[02] EXIT \n")
         try:
-            choice=int(input(f"{inb}>> ENTER : "))
+            choice=int(input(f"{nf}>> ENTER : "))
         except:
             continue
         if choice == 2:

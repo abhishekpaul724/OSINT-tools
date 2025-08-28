@@ -7,6 +7,7 @@ nf="\033[38;2;217;70;239m" #neon_fuchsia
 vc="\033[38;2;140;100;220m" #violet_crush
 inp="\033[38;2;255;32;121m" #infrared_pink
 inb="\033[38;2;126;14;255m" #indigo_blue
+cyan="\033[38;2;0;255;255m" #cyan
 reset="\033[0m"
 
 # Operator Location Data
@@ -126,7 +127,7 @@ def clear_screen():
 def choice():
     while True:
         clear_screen()
-        print(inb+"\n>> WEATHER SYSTEM ACTIVE.\n>> ENTER NUMERIC CODE TO PROCEED.\n"+reset)
+        print(vc+"\n>> WEATHER SYSTEM ACTIVE.\n>> ENTER NUMERIC CODE TO PROCEED.\n"+reset)
         print(f"{nf}[01] {inp}OPERATOR'S STATION"+reset)
         print(f"{nf}[02] {inp}LATITUDE AND LONGITUDE"+reset)
         print(f"{nf}[03] {inp}EXIT"+reset)
