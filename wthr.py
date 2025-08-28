@@ -6,6 +6,7 @@ from datetime import datetime
 nf="\033[38;2;217;70;239m" #neon_fuchsia
 vc="\033[38;2;140;100;220m" #violet_crush
 inp="\033[38;2;255;32;121m" #infrared_pink
+inb="\033[38;2;126;14;255m" #indigo_blue
 reset="\033[0m"
 
 # Operator Location Data
@@ -125,12 +126,12 @@ def clear_screen():
 def choice():
     while True:
         clear_screen()
-        print(vc+"\n>> WEATHER SYSTEM ACTIVE.\n>> ENTER NUMERIC CODE TO PROCEED.\n"+reset)
+        print(inb+"\n>> WEATHER SYSTEM ACTIVE.\n>> ENTER NUMERIC CODE TO PROCEED.\n"+reset)
         print(f"{nf}[01] {inp}OPERATOR'S STATION"+reset)
         print(f"{nf}[02] {inp}LATITUDE AND LONGITUDE"+reset)
         print(f"{nf}[03] {inp}EXIT"+reset)
         try:
-            ch=int(input(f"\n{vc}>> ENTER: {nf}"))
+            ch=int(input(f"\n{inb}>> ENTER: {nf}"))
         except:
             continue
         try:
