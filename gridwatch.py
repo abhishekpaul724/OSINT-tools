@@ -111,6 +111,8 @@ def source_choice():
             return
         if choice in datafeeds:
             datafeeds[choice]()
+        else:
+            continue
 
 if __name__=='__main__':
     source_choice()
