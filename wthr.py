@@ -132,20 +132,22 @@ def choice():
         print(f"{nf}[02] {inp}LATITUDE AND LONGITUDE"+reset)
         print(f"{nf}[03] {inp}EXIT"+reset)
         try:
-            ch=int(input(f"\n{inb}>> ENTER: {nf}"))
+            choice=int(input(f"\n{inb}>> ENTER: {nf}"))
         except:
             continue
-        try:
-            if(ch==1):
-                show_weather(operator_latitude,operator_longitude,operator_location)
-            if(ch==2):
-                custom_lat_long()
-            elif(ch==3):
-                print(reset)
-                clear_screen()
-                break
-        except:
+        if(choice==3):
+            print(reset)
             clear_screen()
+            return
+        if choice in choice_dict:
+            choice_dict[choice]()
+        else:
+            continue
+
+choice_dict = {
+    1: lambda: show_weather(operator_latitude,operator_longitude,operator_location),
+    2: custom_lat_long
+}
 
 if __name__=='__main__':
     choice()
