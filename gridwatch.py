@@ -11,10 +11,11 @@ cyan="\033[38;2;0;255;255m" #cyan
 reset="\033[0m"
 
 hindu_dict={
-        1:"https://www.thehindu.com/news/national/feeder/default.rss",
-        2:"https://www.thehindu.com/news/international/feeder/default.rss",
-        3:"https://www.thehindu.com/sci-tech/science/feeder/default.rss",
-        4:"https://www.thehindu.com/business/Industry/feeder/default.rss"
+        0:"https://www.thehindu.com/",
+        1:"news/national/feeder/default.rss",
+        2:"news/international/feeder/default.rss",
+        3:"sci-tech/science/feeder/default.rss",
+        4:"business/Industry/feeder/default.rss"
     }
 hindu_label={
     1:"INDIA",
@@ -23,16 +24,17 @@ hindu_label={
     4:"INDUSTRY"
 }
 toi_dict={
-    1:"https://timesofindia.indiatimes.com/rssfeedstopstories.cms",
-    2:"https://timesofindia.indiatimes.com/rssfeeds/-2128936835.cms",
-    3:"https://timesofindia.indiatimes.com/rssfeeds/296589292.cms",
-    4:"https://timesofindia.indiatimes.com/rssfeeds/-2128672765.cms",
-    5:"https://timesofindia.indiatimes.com/rssfeeds/2647163.cms",
-    6:"https://timesofindia.indiatimes.com/rssfeeds/66949542.cms",
-    7:"https://timesofindia.indiatimes.com/rssfeeds/4719148.cms",
-    8:"https://timesofindia.indiatimes.com/rssfeeds/1898055.cms",
-    9:"https://timesofindia.indiatimes.com/rssfeeds/1081479906.cms",
-    10:"https://timesofindia.indiatimes.com/rssfeeds/7098551.cms"
+    0:"https://timesofindia.indiatimes.com/",
+    1:"rssfeedstopstories.cms",
+    2:"rssfeeds/-2128936835.cms",
+    3:"rssfeeds/296589292.cms",
+    4:"rssfeeds/-2128672765.cms",
+    5:"rssfeeds/2647163.cms",
+    6:"rssfeeds/66949542.cms",
+    7:"rssfeeds/4719148.cms",
+    8:"rssfeeds/1898055.cms",
+    9:"rssfeeds/1081479906.cms",
+    10:"rssfeeds/7098551.cms"
 }
 toi_label={
     1:"TOP STORIES",
@@ -47,12 +49,25 @@ toi_label={
     10:"NRI"
 }
 nyt_dict={
-    1:"https://rss.nytimes.com/services/xml/rss/nyt/World.xml",
-    2:"https://rss.nytimes.com/services/xml/rss/nyt/AsiaPacific.xml"
+    0:"https://rss.nytimes.com/services/xml/rss/nyt/",
+    1:"World.xml",
+    2:"AsiaPacific.xml",
+    3:"Americas.xml",
+    4:"Europe.xml",
+    5:"MiddleEast.xml",
+    6:"EnergyEnvironment.xml",
+    7:"Technology.xml",
+    8:"Science.xml"
 }
 nyt_label={
     1:"WORLD",
-    2:"ASIAPACIFIC"
+    2:"ASIAPACIFIC",
+    3:"AMERICAS",
+    4:"EUROPE",
+    5:"MIDDLE_EAST",
+    6:"ENERGY_AND_ENVIRONMENT",
+    7:"TECHNOLOGY",
+    8:"SCIENCE"
 }
 
 def strip_html(html):
@@ -84,9 +99,9 @@ def datafeed(datafeed_name,datafeed_dict,datafeed_label):
             continue
         if choice == c+1:
             break
-        if choice in datafeed_dict:
+        if choice > 0 and choice in datafeed_dict:
             clear_screen()
-            datafeed=feedparser.parse(datafeed_dict[choice])
+            datafeed=feedparser.parse(datafeed_dict[0]+datafeed_dict[choice])
             cprint(nf,f"[ DATAFEED {datafeed_name} ]\n")
             for entry in datafeed.entries:
                 cprint(cyan,entry.title)
