@@ -31,7 +31,8 @@ toi_dict={
     6:"https://timesofindia.indiatimes.com/rssfeeds/66949542.cms",
     7:"https://timesofindia.indiatimes.com/rssfeeds/4719148.cms",
     8:"https://timesofindia.indiatimes.com/rssfeeds/1898055.cms",
-    9:"https://timesofindia.indiatimes.com/rssfeeds/1081479906.cms"
+    9:"https://timesofindia.indiatimes.com/rssfeeds/1081479906.cms",
+    10:"https://timesofindia.indiatimes.com/rssfeeds/7098551.cms"
 }
 toi_label={
     1:"TOP STORIES",
@@ -42,9 +43,17 @@ toi_label={
     6:"TECHNOLOGY",
     7:"SPORTS",
     8:"BUSINESS",
-    9:"ENTERTAINMENT"
+    9:"ENTERTAINMENT",
+    10:"NRI"
 }
-
+nyt_dict={
+    1:"https://rss.nytimes.com/services/xml/rss/nyt/World.xml",
+    2:"https://rss.nytimes.com/services/xml/rss/nyt/AsiaPacific.xml"
+}
+nyt_label={
+    1:"WORLD",
+    2:"ASIAPACIFIC"
+}
 
 def strip_html(html):
     return re.sub('<[^<]+?>', '', html)
@@ -92,7 +101,8 @@ def datafeed(datafeed_name,datafeed_dict,datafeed_label):
 
 datafeeds={
     1: lambda: datafeed("HINDU",hindu_dict,hindu_label),
-    2: lambda: datafeed("TIMES_OF_INDIA",toi_dict,toi_label)
+    2: lambda: datafeed("TIMES_OF_INDIA",toi_dict,toi_label),
+    3: lambda: datafeed("NY_TIMES",nyt_dict,nyt_label)
 }
 
 def source_choice():
@@ -100,12 +110,12 @@ def source_choice():
         clear_screen()
         cprint(nf,"[ GRIDWATCH ACTIVE ]")
         cprint(nf,">> SELECT DATAFEED\n")
-        cprint(inp,"[01] HINDU \n[02] TIMES OF INDIA \n[03] EXIT \n")
+        cprint(inp,"[01] HINDU \n[02] TIMES OF INDIA \n[03] NEW YORK TIMES \n[04] EXIT \n")
         try:
             choice=int(input(f"{nf}>> ENTER : "))
         except:
             continue
-        if choice == 3:
+        if choice == 4:
             clear_screen()
             print(reset)
             return
